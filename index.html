@@ -10,7 +10,15 @@ function I(i){return document.getElementById(i);}
 
 //LIST OF TEST SERVERS. See documentation for details if needed
 var SPEEDTEST_SERVERS=[
-	{	//this is my demo server, remove it
+	{	
+		name:"Newtelco (Frankfurt)",
+		server:"//speedtest.newtelco.dev/",
+		dlURL:"backend/garbage.php",
+		ulURL:"backend/empty.php",
+		pingURL:"backend/empty.php",
+		getIpURL:"backend/getIP.php"
+	},
+	{
 		name:"Speedtest Demo Server (Helsinki)", //user friendly name for the server
 		server:"//fi.openspeed.org/", //URL to the server. // at the beginning will be replaced with http:// or https:// automatically
 		dlURL:"garbage.php",  //path to download test on this server (garbage.php or replacement)
@@ -18,20 +26,12 @@ var SPEEDTEST_SERVERS=[
 		pingURL:"empty.php",  //path to ping/jitter test on this server (empty.php or replacement)
 		getIpURL:"getIP.php"  //path to getIP on this server (getIP.php or replacement)
 	},
-	{	//this is my demo server, remove it
-		name:"Old Speedtest Demo Server",
-		server:"//mpotdemo.fdossena.com/",
-		dlURL:"garbage.php",
-		ulURL:"empty.php",
-		pingURL:"empty.php",
-		getIpURL:"getIP.php"
-	}
 	//add other servers here, comma separated
 ];
 
 //INITIALIZE SPEEDTEST
 var s=new Speedtest(); //create speedtest object
-s.setParameter("telemetry_level","basic"); //enable telemetry
+s.setParameter("telemetry_level","full"); //enable telemetry
 
 //SERVER AUTO SELECTION
 function initServers(){
@@ -77,7 +77,7 @@ function initServers(){
 }
 
 var meterBk=/Trident.*rv:(\d+\.\d+)/i.test(navigator.userAgent)?"#EAEAEA":"#80808040";
-var dlColor="#6060AA",
+var dlColor="#67b246",
 	ulColor="#616161";
 var progColor=meterBk;
 
@@ -386,10 +386,10 @@ function initUI(){
 		}
 	}
 </style>
-<title>LibreSpeed Example</title>
+<title>Newtelco Speedtest</title>
 </head>
 <body onload="initServers()">
-<h1>LibreSpeed Example</h1>
+<h1>Newtelco Speedtest</h1>
 <div id="loading" class="visible">
 	<p id="message"><span class="loadCircle"></span>Selecting a server...</p>
 </div>
@@ -436,7 +436,7 @@ function initUI(){
 			<img src="" id="resultsImg" />
 		</div>
 	</div>
-	<a href="https://github.com/librespeed/speedtest">Source code</a>
+	<!-- <a href="https://github.com/librespeed/speedtest">Source code</a> -->
 </div>
 <div id="privacyPolicy" style="display:none">
     <h2>Privacy Policy</h2>
@@ -471,7 +471,7 @@ function initUI(){
     <h4>Data removal</h4>
     <p>
         If you want to have your information deleted, you need to provide either the ID of the test or your IP address. This is the only way to identify your data, without this information we won't be able to comply with your request.<br/><br/>
-        Contact this email address for all deletion requests: <a href="mailto:PUT@YOUR_EMAIL.HERE">TO BE FILLED BY DEVELOPER</a>.
+        Contact this email address for all deletion requests: <a href="mailto:service@newtelco.de">service@newtelco.de</a>.
     </p>
     <br/><br/>
     <a class="privacy" href="#" onclick="I('privacyPolicy').style.display='none'">Close</a><br/>
